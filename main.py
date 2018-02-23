@@ -86,8 +86,7 @@ class AsteroidsDemo(ShowBase):
         self.escapeText = genLabelText("ESC: Quit", 0)
         self.leftkeyText = genLabelText("[Left Arrow]: Turn Left (CCW)", 1)
         self.rightkeyText = genLabelText("[Right Arrow]: Turn Right (CW)", 2)
-        self.upkeyText = genLabelText("[Up Arrow]: Accelerate", 3)
-        self.spacekeyText = genLabelText("[Space Bar]: Fire", 4)
+        self.spacekeyText = genLabelText("[Space Bar]: Fire", 3)
 
         # Disable default mouse-based camera control.  This is a method on the
         # ShowBase class from which we inherit.
@@ -156,7 +155,7 @@ class AsteroidsDemo(ShowBase):
         if not self.alive:
             return Task.cont
 
-        if len(self.asteroids) <= 5:
+        if len(self.asteroids) <= 3:
             # This loads an asteroid. The texture chosen is random
             # from "asteroid1.png" to "asteroid3.png".
             asteroid = loadObject(f'asteroid{randint(1, 3)}.png',
@@ -165,7 +164,7 @@ class AsteroidsDemo(ShowBase):
 
             asteroid.setX(choice(tuple(range(-SCREEN_X, SCREEN_X))))
             # Y
-            asteroid.setZ(choice(tuple(range(-SCREEN_Y - 40, SCREEN_Y))))
+            asteroid.setZ(choice(tuple(range(-SCREEN_Y + 15, SCREEN_Y))))
 
             # Heading is a random angle in degrees, only for down
             heading = deg2Rad(randint(110, 250))
